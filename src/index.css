@@ -48,6 +48,7 @@ header img {
 #playerContainer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .player {
@@ -56,10 +57,32 @@ header img {
 
 .player-name,
 .player-sign {
-  font-size: larger;
+  font-size: x-large;
   margin-right: 10px;
 }
 
 .player-btn {
   cursor: pointer;
+}
+
+#gameBoard>li {
+  list-style-type: none;
+}
+
+#gameBoard>li>ol {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#gameBoard>li>ol>li {
+  cursor: pointer;
+  font-style: oblique;
+  padding: 1rem;
+  margin: 0.5rem;
+  list-style-type: none;
+  background-color: rgb(3, 179, 255);
+  border-radius: 5px;
+  font-size: xx-large;
+  width: 60px;
+  height: 60px;
 }

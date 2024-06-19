@@ -2,6 +2,7 @@ import ticTacToeLogo from '/tic-tac-toe.svg'
 import { useState } from 'react';
 import Player from './components/Player.tsx';
 import { Player as PlayerType } from './types/common.types.ts';
+import { GameBoard } from './components/GameBoard.tsx';
 
 function App() {
   const [player_1] = useState<PlayerType>({ id: "100", name: "John", sign: 'X' });
@@ -18,6 +19,7 @@ function App() {
           <Player player={player_1} />
           <Player player={player_2} />
         </div>
+        <GameBoard />
       </div>
     </>
   )
