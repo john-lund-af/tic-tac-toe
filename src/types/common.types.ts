@@ -3,3 +3,5 @@ export interface Player {
   name: string;
   sign: string;
 }
+
+export type GameBoard = (string | null)[][];

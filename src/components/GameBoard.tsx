@@ -1,5 +1,6 @@
+import { GameBoard as GameBoardType } from '../types/common.types';
 
-const initialBoard = [
+const initialBoard: GameBoardType = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
