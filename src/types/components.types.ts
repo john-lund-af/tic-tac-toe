@@ -7,5 +7,5 @@ export interface PlayerComponentProps {
 
 export interface GameboardComponentProps {
   gameBoard: GameBoard;
-  onTurn: () => void;
+  onTurn: (row: number, col: number) => void;
 }
