@@ -1,15 +1,9 @@
-import { GameBoard as GameBoardType } from '../types/common.types';
+import { GameboardComponentProps } from '../types/components.types';
 
-const initialBoard: GameBoardType = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-export function GameBoard() {
+export function GameBoard({ gameBoard, onTurn }: GameboardComponentProps) {
   return <ol id="gameBoard">
-    {initialBoard.map((row, rowIndex) => <li key={rowIndex}><ol>
-      {row.map((col, colIndex) => <li key={colIndex}>{col}</li>)}
+    {gameBoard.map((row, rowIndex) => <li key={rowIndex}><ol>
+      {row.map((col, colIndex) => <li key={colIndex} onClick={onTurn}>{col}</li>)}
     </ol></li>)}
   </ol>
 }
