@@ -1,4 +1,3 @@
-import ticTacToeLogo from '/tic-tac-toe.svg'
 import { useState } from 'react';
 import Player from './components/Player.tsx';
 import { Player as PlayerType } from './types/common.types.ts';
@@ -42,7 +41,6 @@ function App() {
     <>
       <header>
         <h1>Tic-Tac-Toe</h1>
-        <img src={ticTacToeLogo} alt="Tic Tac Toe Image" />
       </header>
       <div className="container">
         <div id="playerContainer">
