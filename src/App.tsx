@@ -31,6 +31,13 @@ function App() {
     setPlayer2(prevPlayer => ({ ...prevPlayer, myTurn: !prevPlayer.myTurn }));
   }
 
+  function onPlayerNameChange(playerId: string, playerName: string) {
+    if (player1.id === playerId)
+      setPlayer1(prevPlayer => ({ ...prevPlayer, name: playerName }));
+    else
+      setPlayer2(prevPlayer => ({ ...prevPlayer, name: playerName }));
+  }
+
   return (
     <>
       <header>
@@ -39,8 +46,8 @@ function App() {
       </header>
       <div className="container">
         <div id="playerContainer">
-          <Player player={player1} />
-          <Player player={player2} />
+          <Player player={player1} onNameChange={onPlayerNameChange} />
+          <Player player={player2} onNameChange={onPlayerNameChange} />
         </div>
         <GameBoard gameBoard={board} onTurn={handleTurn} />
       </div>

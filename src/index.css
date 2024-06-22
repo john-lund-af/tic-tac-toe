@@ -68,6 +68,12 @@ header img {
   margin-right: 10px;
 }
 
+input.player-name {
+  border: none;
+  background-color: #333;
+  color: var(--white-color);
+}
+
 .player-btn {
   cursor: pointer;
   border: none;

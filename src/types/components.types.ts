@@ -3,6 +3,7 @@ import { GameBoard } from './common.types';
 
 export interface PlayerComponentProps {
   player: Player;
+  onNameChange: (playerId: string, playerName: string) => void;
 }
 
 export interface GameboardComponentProps {
