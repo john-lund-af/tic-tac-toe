@@ -130,3 +130,52 @@ input.player-name {
   font-size: x-large;
   line-height: 32px;
 }
+
+#game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(40, 38, 23, 0.95);
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
+}
+
+#game-over h2 {
+  font-family: 'Caprasimo', cursive;
+  font-size: 4rem;
+  text-align: center;
+  color: rgb(3, 179, 255);
+  margin: 0;
+}
+
+#game-over p {
+  font-size: 2rem;
+  text-align: center;
+  color: #e1dec7;
+}
+
+#game-over button {
+  display: block;
+  margin: 0 auto;
+  font-size: 1rem;
+  background: none;
+  border: 2px solid rgb(3, 179, 255);
+  color: rgb(3, 179, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s, color 0.2s;
+  box-shadow: 0 0 8px rgba(3, 179, 255, 0.5);
+}
+
+#game-over button:hover {
+  background: rgb(3, 179, 255);
+  color: #3f3b00;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(3, 179, 255, 0.8);
+}
