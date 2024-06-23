@@ -15,3 +15,7 @@ export interface GameboardComponentProps {
 export interface LogComponentProps {
   logCollection: Logger[];
 }
+
+export interface GameOverComponentProps {
+  playerName: string | undefined;
+}
