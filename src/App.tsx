@@ -5,6 +5,8 @@ import { GameBoard } from './components/GameBoard.tsx';
 import { GameBoard as GameBoardType } from './types/common.types.ts';
 import Log from './components/Log.tsx';
 import { Logger as LoggerType } from './types/common.types.ts';
+import { WINNING_COMBINATIONS } from './utils/winning-combinations.ts';
+
 
 const initialBoard: GameBoardType = [
   [null, null, null],
@@ -15,12 +17,25 @@ const initialBoard: GameBoardType = [
 function App() {
   const [player1, setPlayer1] = useState<PlayerType>({ id: "100", name: "John", sign: 'X', myTurn: true });
   const [player2, setPlayer2] = useState<PlayerType>({ id: "200", name: "Gosia", sign: 'O', myTurn: false });
-  const [board, setBoard] = useState<GameBoardType>(initialBoard);
+  const [currentBoard, setCurrentBoard] = useState<GameBoardType>(initialBoard);
   const [logger, setLogger] = useState<LoggerType[]>([]);
+
+  let winner;
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquareSymbol = currentBoard[combination[0].row][combination[0].column];
+    const secondSquareSymbol = currentBoard[combination[1].row][combination[1].column];
+    const thirdSquareSymbol = currentBoard[combination[2].row][combination[2].column];
+
+    if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol) {
+      winner = player1.myTurn ? player2.name : player1.name;
+    }
+  }
+
 
   function addSignToBoard(row: number, col: number) {
     const signToAdd = player1.myTurn ? player1.sign : player2.sign;
-    setBoard((prevBoard) => {
+    setCurrentBoard((prevBoard) => {
       const updatedBoard = [...prevBoard.map(row => [...row])];
       updatedBoard[row][col] = signToAdd;
       return updatedBoard;
@@ -59,7 +74,8 @@ function App() {
           <Player player={player1} onNameChange={onPlayerNameChange} />
           <Player player={player2} onNameChange={onPlayerNameChange} />
         </div>
-        <GameBoard gameBoard={board} onTurn={handleTurn} />
+        {winner && <p>{winner} won</p>}
+        <GameBoard gameBoard={currentBoard} onTurn={handleTurn} />
       </div>
       <Log logCollection={logger} />
     </main>
