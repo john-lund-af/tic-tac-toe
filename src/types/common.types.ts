@@ -5,4 +5,14 @@ export interface Player {
   myTurn: boolean;
 }
 
+type Square = {
+  row: number;
+  col: number;
+}
+
+export interface Logger {
+  square: Square;
+  currentPlayer: string;
+}
+
 export type GameBoard = (string | null)[][];
