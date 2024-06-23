@@ -6,6 +6,7 @@ import { GameBoard as GameBoardType } from './types/common.types.ts';
 import Log from './components/Log.tsx';
 import { Logger as LoggerType } from './types/common.types.ts';
 import { WINNING_COMBINATIONS } from './utils/winning-combinations.ts';
+import GameOver from './components/GameOver.tsx';
 
 
 const initialBoard: GameBoardType = [
@@ -31,6 +32,8 @@ function App() {
       winner = player1.myTurn ? player2.name : player1.name;
     }
   }
+
+  const draw = logger.length >= 9 && !winner;
 
 
   function addSignToBoard(row: number, col: number) {
@@ -74,7 +77,7 @@ function App() {
           <Player player={player1} onNameChange={onPlayerNameChange} />
           <Player player={player2} onNameChange={onPlayerNameChange} />
         </div>
-        {winner && <p>{winner} won</p>}
+        {(winner || draw) && <GameOver playerName={winner} />}
         <GameBoard gameBoard={currentBoard} onTurn={handleTurn} />
       </div>
       <Log logCollection={logger} />
