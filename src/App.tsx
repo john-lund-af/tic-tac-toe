@@ -9,29 +9,32 @@ import { WINNING_COMBINATIONS } from './utils/winning-combinations.ts';
 import GameOver from './components/GameOver.tsx';
 
 
-const initialBoard: GameBoardType = [
+const INITIAL_BOARD: GameBoardType = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
 
-function App() {
-  const [player1, setPlayer1] = useState<PlayerType>({ id: "100", name: "Player 1", sign: 'X', myTurn: true });
-  const [player2, setPlayer2] = useState<PlayerType>({ id: "200", name: "Player 2", sign: 'O', myTurn: false });
-  const [currentBoard, setCurrentBoard] = useState<GameBoardType>(initialBoard);
-  const [logger, setLogger] = useState<LoggerType[]>([]);
-
-  let winner;
-
+function deriveWinner(currentBoard: GameBoardType, player1: PlayerType, player2: PlayerType) {
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquareSymbol = currentBoard[combination[0].row][combination[0].column];
     const secondSquareSymbol = currentBoard[combination[1].row][combination[1].column];
     const thirdSquareSymbol = currentBoard[combination[2].row][combination[2].column];
 
     if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol) {
-      winner = player1.myTurn ? player2.name : player1.name;
+      return player1.myTurn ? player2.name : player1.name;
     }
   }
+  return undefined;
+}
+
+function App() {
+  const [player1, setPlayer1] = useState<PlayerType>({ id: "100", name: "Player 1", sign: 'X', myTurn: true });
+  const [player2, setPlayer2] = useState<PlayerType>({ id: "200", name: "Player 2", sign: 'O', myTurn: false });
+  const [currentBoard, setCurrentBoard] = useState<GameBoardType>(INITIAL_BOARD);
+  const [logger, setLogger] = useState<LoggerType[]>([]);
+
+  const winner = deriveWinner(currentBoard, player1, player2);
 
   const draw = logger.length >= 9 && !winner;
 
@@ -70,7 +73,7 @@ function App() {
   function handleRestart() {
     setPlayer1(prevPlayer => ({ ...prevPlayer, myTurn: true }))
     setPlayer2(prevPlayer => ({ ...prevPlayer, myTurn: false }))
-    setCurrentBoard(() => initialBoard);
+    setCurrentBoard(() => INITIAL_BOARD);
     setLogger(() => []);
   }
 
