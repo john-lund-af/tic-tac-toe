@@ -18,4 +18,5 @@ export interface LogComponentProps {
 
 export interface GameOverComponentProps {
   playerName: string | undefined;
+  onRestart: () => void;
 }

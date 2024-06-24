@@ -16,8 +16,8 @@ const initialBoard: GameBoardType = [
 ];
 
 function App() {
-  const [player1, setPlayer1] = useState<PlayerType>({ id: "100", name: "John", sign: 'X', myTurn: true });
-  const [player2, setPlayer2] = useState<PlayerType>({ id: "200", name: "Gosia", sign: 'O', myTurn: false });
+  const [player1, setPlayer1] = useState<PlayerType>({ id: "100", name: "Player 1", sign: 'X', myTurn: true });
+  const [player2, setPlayer2] = useState<PlayerType>({ id: "200", name: "Player 2", sign: 'O', myTurn: false });
   const [currentBoard, setCurrentBoard] = useState<GameBoardType>(initialBoard);
   const [logger, setLogger] = useState<LoggerType[]>([]);
 
@@ -67,6 +67,13 @@ function App() {
       setPlayer2(prevPlayer => ({ ...prevPlayer, name: playerName }));
   }
 
+  function handleRestart() {
+    setPlayer1(prevPlayer => ({ ...prevPlayer, myTurn: true }))
+    setPlayer2(prevPlayer => ({ ...prevPlayer, myTurn: false }))
+    setCurrentBoard(() => initialBoard);
+    setLogger(() => []);
+  }
+
   return (
     <main>
       <header>
@@ -77,7 +84,7 @@ function App() {
           <Player player={player1} onNameChange={onPlayerNameChange} />
           <Player player={player2} onNameChange={onPlayerNameChange} />
         </div>
-        {(winner || draw) && <GameOver playerName={winner} />}
+        {(winner || draw) && <GameOver playerName={winner} onRestart={handleRestart} />}
         <GameBoard gameBoard={currentBoard} onTurn={handleTurn} />
       </div>
       <Log logCollection={logger} />
