@@ -1,30 +1,94 @@
-# React + TypeScript + Vite
+# Tic-Tac-Toe Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-Currently, two official plugins are available:
+## Introduction
+Welcome to the Tic-Tac-Toe application! This is a simple implementation of the classic Tic-Tac-Toe game built using ReactJS and TypeScript. The application allows two players to play the game in a browser.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Interactive and responsive UI
+- Two-player game
+- Displays the current player's turn
+- Option to restart the game
 
-## Expanding the ESLint configuration
+## Technologies Used
+- ReactJS
+- TypeScript
+- CSS (for styling)
+- Vite (for project setup)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
+Follow these steps to set up the project locally:
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/john-lund-af/tic-tac-toe.git  
+   cd tic-tac-toe
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173` to see the application running.
+
+## Usage
+- Open the application in your browser.
+- Players take turns clicking on the squares of the game board to place their marks (X or O).
+- The game will automatically detect and display the winner, if any, otherwise it will detect a draw.
+- Click the "Restart" button to start a new game.
+
+## Project Structure
+```
+tic-tac-toe/
+├── public/
+│   ├── tic-tac-toe.svg
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── GameBoard.tsx
+│   │   ├── GameOver.tsx
+│   │   └── Log.tsx
+│   │   └── Player.tsx
+│   ├── types/
+│   │   ├── common.types.ts
+│   │   ├── components.types.ts
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+├── package.json
+├── tsconfig.json
+└── README.md
+└── ...
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contributing
+Contributions are welcome! If you have any suggestions or improvements, please create a pull request or open an issue.
+
+1. **Fork the repository**
+2. **Create a new branch (`git checkout -b feature-branch`)**
+3. **Commit your changes (`git commit -am 'Add new feature'`)**
+4. **Push to the branch (`git push origin feature-branch`)**
+5. **Create a new Pull Request**
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+- This project was scaffolded with [Vite](https://vitejs.dev/).
+- Special thanks to the React and TypeScript communities for their fantastic resources and support.
